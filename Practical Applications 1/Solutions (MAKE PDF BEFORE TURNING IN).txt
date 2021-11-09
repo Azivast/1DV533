@@ -1,0 +1,6 @@
+Task 3:
+weeklyWages on line 27 had not been declared.
+
+the cout on line 36 was missing a semicolon at the end.
+
+the main function was of typ void but returned an integer. Changed 'void main()' to 'int main()'.
