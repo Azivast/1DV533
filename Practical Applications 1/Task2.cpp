@@ -45,7 +45,7 @@ void statistics()
                cls(); // clear screen
                cout << "STATISTICS\n"
                     << "==========\n"
-                    << "Enter four integers: ";
+                    << "Enter four seperate integers: ";
                cin >> first >> second >> third >> forth;
 
                // Calculations
@@ -72,6 +72,6 @@ void statistics()
 // Clear screan in both windows and linux
 void cls(void)
 {
-    system("cls||clear");
-    return;
+     system("cls||clear");
+     return;
 }

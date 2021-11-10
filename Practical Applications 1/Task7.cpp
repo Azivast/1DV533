@@ -42,7 +42,7 @@ int main()
      return 0;
 } 
 
-// Clear screan in both windows and linux
+// Clear screen in both windows and linux
 void cls()
 {
      system("cls||clear");
