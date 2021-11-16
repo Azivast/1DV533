@@ -34,8 +34,11 @@ int main()
           // Make sure input is not outside of values suitable for formula
           while (windSpeed < LIMIT)
           {
+               cin.clear(); 
+               cin.ignore(80,'\n'); // Skip any possible debris and line endings
+
                cout << "\nThe formula is innacurate below wind speeds of " << LIMIT << " m/s.\n"
-                    << "Please enter a different wind speed (m/s): ";
+                    << "Please enter a new wind speed (m/s): ";
                cin >> windSpeed;
           }
 
@@ -44,7 +47,9 @@ int main()
 
           cout << "New calculation (Y/N)?: ";
           cin >> answer;
-          cin.ignore(80,'\n'); // Ignore possible debris and line endings 
+
+          cin.clear(); 
+          cin.ignore(80,'\n'); // Skip any possible debris and line endings
      } 
      while (answer == 'Y' || answer == 'y');
      

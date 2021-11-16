@@ -1,6 +1,6 @@
 // -------------------------------------------------------------------------------------
 // File: Task5.cpp  
-// Summary: Calculates remaining travel time using remaining distance and avarage speed.
+// Summary: Calculates remaining travel time using remaining distance and average speed.
 // Version : 1  
 // Author: Olle Astré
 // -------------------------------------------------------------------------------------
@@ -9,6 +9,7 @@
 #include <iostream>
 using namespace std;
 
+// Prototypes 
 void calculateTime();
 void cls();
 
@@ -29,11 +30,11 @@ int main()
      return 0;
 } 
 
-// Get user input, calculate and output remaining travel time.
+// Gets user input, calculates and outputs remaining travel time.
 void calculateTime() 
 {
-     int avarageSpeed = 0; // In km/h
-     int distanceLeft = 0; // In swedish miles 'mil'.
+     int averageSpeed = 0; // In km/h
+     int distanceLeft = 0; // In swedish miles 'mil'
      int hoursLeft = 0;
      double rest = 0;
      int minutesLeft = 0;
@@ -42,23 +43,24 @@ void calculateTime()
      cout << "TRAVEL TIME\n";
      cout << "===========\n";
      cout << "Input the avarage speed (km/h): ";
-     cin >> avarageSpeed;
+     cin >> averageSpeed;
 
      cout << "Input the remaining distance (swedish miles): ";
      cin >> distanceLeft;
      cout << endl;
 
      // Check that input is not zero to avoid dividing by zero.
-     if (avarageSpeed == 0) {
+     if (averageSpeed == 0) 
+     {
           cout << "Aborting: Invalid input.\n"
                << "Make sure speed is not 0.\n\n";
           return;
      }
 
      // Calculate the remaining time
-     hoursLeft = (distanceLeft * 10)/avarageSpeed; // Multiplied by 10 so that both messurments use km.
-     rest = (distanceLeft * 10)%avarageSpeed;
-     minutesLeft = (rest/avarageSpeed)*60 + 0.5;        
+     hoursLeft = (distanceLeft * 10)/averageSpeed; // Multiplied by 10 so that both messurments use km.
+     rest = (distanceLeft * 10)%averageSpeed;
+     minutesLeft = (rest/averageSpeed)*60 + 0.5;        
 
      cout << "You will reach your destination in " << hoursLeft << " hours and " << minutesLeft << " minutes." << endl << endl;
 }

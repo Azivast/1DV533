@@ -34,7 +34,6 @@ int main()
           cin.ignore(80,'\n'); // Skip any possible debris and line endings
           cout << endl << endl;
 
-
           // Calculations
           newMonthlyWage = static_cast<int>(monthlyWage * (1 + FACTOR) + 0.5);
           retroactiveWage = static_cast<int>(monthlyWage * FACTOR * 6 + 0.5);
@@ -46,8 +45,6 @@ int main()
 
           cout << "New calculation (Y/N)?\n";
           cin >> answer;
-
-
      }
      while (answer == 'Y' || answer == 'y');
      

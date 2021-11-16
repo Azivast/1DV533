@@ -17,14 +17,25 @@ int main()
 
      do
      {
-          int number;
-          int d1, d2, d3;
-          int sum;
+          int number = 0;
+          int d1, d2, d3 = 0;
+          int sum = 0;
 
 
           cls(); // Clear screen
           cout << "Input a three digit number: ";
           cin >> number;
+
+          // Reprompt user if number is more than three digits or not a number
+          while (cin.fail() || number > 999)
+          {
+               cin.clear();
+               cin.ignore(80,'\n'); // Skip any possible debris and line endings
+
+               cout << "\nInvalid input"
+                    << "\nInput a three digit number: ";
+               cin >> number;
+          }
 
           // Split 'number' into individual digits
           d1 = number / 100;
@@ -32,12 +43,11 @@ int main()
           d3 = number % 10;
 
           sum = d1+d2+d3;
-          cout << "\nThe sum of the digits in " << number << " is " << sum << endl;
+          cout << "\nThe sum of the digits in " << number << " is " << sum << endl << endl;
 
           cout << "New calculation (Y/N)?\n";
           cin >> answer;
-     }
-     while (answer == 'Y' || answer == 'y');
+     } while (answer == 'Y' || answer == 'y');
      
      return 0;
 } 

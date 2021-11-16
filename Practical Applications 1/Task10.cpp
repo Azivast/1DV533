@@ -7,14 +7,19 @@
 
 // Preprocessor directives 
 #include <iostream>
+#include <iomanip> //setw, setfill
 #include <cmath> // pow
+#include <limits>  // numeric_limits
 using namespace std;
 
-void getUserInput();
+// Prototypes 
+
+double getUserInput(string promptText);
 double calculateInterest(double initialAmount, int years);
 void printResult(double result);
 void cls();
 
+// Global variables
 const int RATE = 3; // Interest rate
 double initialAmount = 0;
 int years;
@@ -25,16 +30,19 @@ int main()
      do
      {
           cls();
-          cout << "COMPOUND INTEREST\n";
-          cout << "==============\n\n";
-          getUserInput();
+          cout << "COMPOUND INTEREST\n"
+               << "==============\n\n";
+
+          initialAmount = getUserInput("Load initial amount: ");
+          years = getUserInput("Load number of years: ");
+          cout << endl;
+
           double result = calculateInterest(initialAmount, years);
           printResult(result);
 
-
           cout << "One more time (Y/N)? ";
           cin >> answer;
-          cin.ignore(80,'\n'); // Ignore possible debris and line endings 
+          cin.ignore( numeric_limits<streamsize>::max(),'\n'); // Ignore possible debris and line endings 
      } 
      while (answer == 'Y' || answer == 'y');
      
@@ -48,21 +56,32 @@ double calculateInterest(double initialAmount, int years)
      return finalAmount;
 }
 
-void getUserInput()
+// Print promptText & get input
+// Reprompts in case of invalid input
+double getUserInput(string promptText)
 {
-    // TODO: sanetize user input
-     cout << "Load initial amount: ";
-     cin >> initialAmount;
+     double input;
+     cout << promptText;
+     cin >> input;
+     
+     while (cin.fail())
+     {
+          cin.clear(); 
+          cin.ignore( numeric_limits<streamsize>::max(),'\n');
+     
+          cout << "\nInvalid input."
+               << "\nPlease try again: ";
+          cin >> input;
+          cout << endl;
+     } 
 
-     cout << "\nLoad number of years: ";
-     cin >> years;
-     cout << endl;
+     return input;
 }
 
 void printResult(double result)
 {
-     // TODO: Right align 12 characters
-     cout << "The capital with " << RATE << " \% interest rate and after " << years << " years will be: " << result << " SEK\n\n";
+     cout << "The capital with " << RATE << " \% interest rate and after " << years << " years will be: "
+     << right << setw(12) << setfill('_') << result << " SEK\n\n"; // Right aligned in 12 character space with fill characters
 }
 
 

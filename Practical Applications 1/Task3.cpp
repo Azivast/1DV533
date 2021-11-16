@@ -19,16 +19,16 @@
 #include <iostream>   // Preprocessor directives 
 #include <iomanip>  
 using namespace std; 
- 
+
 int main() // Returns an integer, changed from void to int
 {
      // Define and initialize variables 
      int hoursPerWeek = 35;
      double hourlyWages = 83; 
- 
+
      // Calculate weekly salary 
-     double weeklyWages = hoursPerWeek * hourlyWages; // weeklyWages had not been declared. Added double
- 
+     double weeklyWages = hoursPerWeek * hourlyWages; // weeklyWages had not been declared. Added 'double'
+
      // Display results 
      cout << fixed   // Floating point format 
           << setprecision(2)  // 2 decimals 

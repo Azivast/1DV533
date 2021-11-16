@@ -16,8 +16,9 @@
 //     that is iterated in the main function.  
 //   2012-10-21 Revised by Anne. Converted to English version and VS 2012 
 //   2021-11-09 Revised by Olle. Add RATEFACTOR which represents the rate as a factor on line 55.
-//   Canged totalPrice to price on line 71
-//   Added missing = on first condition of line 40.
+//     Canged totalPrice to price on line 75
+//     Multipled both rateSEK and totalPrice by nrOfArticles so that result is as expected.
+//     Added missing = on first condition of line 40.
 //----------------------------------------------------------------------- 
 
 // Preprocessor directives 
@@ -55,7 +56,7 @@ void priceCalculation()
 {
      // Define and initialize constants and variables 
      const int RATE = 25;  // tax rate in percent 
-     const double RATEFACTOR = RATE/100.0; // !Added tax rate as factor
+     const double RATEFACTOR = RATE/100.0; // Added tax rate as factor
 
      double price = 0;  // price per piece 
      int nrOfArticles = 0; // number of articles 
@@ -70,7 +71,9 @@ void priceCalculation()
      cin >> nrOfArticles; 
 
      // Calculate total price and tax rate 
-     rateSEK = nrOfArticles * price * RATEFACTOR; // Changed totalPrice to price since calculation depends on the price before tax. Also multiply by nrOfArticles so that tax rate is correct with multiple articles
+     // Changed totalPrice to price since calculation depends on the price before tax
+     // Also multiply by nrOfArticles so that tax rate is correct with multiple articles
+     rateSEK = nrOfArticles * price * RATEFACTOR;
      totalPrice = nrOfArticles * price *(1 + RATEFACTOR); 
 
       // Display result with 2 decimals 

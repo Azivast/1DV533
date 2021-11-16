@@ -1,1 +1,1 @@
-a
+          cin.clear(); 
