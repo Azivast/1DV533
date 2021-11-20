@@ -1,9 +1,12 @@
-// -------------------------------------------------------------------------------------
+// --------------------------------------------------------------------
 // File: Task7.cpp  
 // Summary: Requests a three digit number and outputs the sum of the three digits.
 // Version : 1  
 // Author: Olle Astré
-// -------------------------------------------------------------------------------------
+//---------------------------------------------------------------------
+// Log:  2021-11-09 Created by Olle.
+//  
+//--------------------------------------------------------------------- 
 
 // Preprocessor directives 
 #include <iostream>
@@ -18,7 +21,7 @@ int main()
      do
      {
           int number = 0;
-          int d1, d2, d3 = 0;
+          int hundreds = 0, tens = 0, units = 0;
           int sum = 0;
 
 
@@ -38,11 +41,11 @@ int main()
           }
 
           // Split 'number' into individual digits
-          d1 = number / 100;
-          d2 = (number % 100) / 10;
-          d3 = number % 10;
+          hundreds = number / 100;
+          tens = (number % 100) / 10;
+          units = number % 10;
 
-          sum = d1+d2+d3;
+          sum = hundreds+tens+units;
           cout << "\nThe sum of the digits in " << number << " is " << sum << endl << endl;
 
           cout << "New calculation (Y/N)?\n";

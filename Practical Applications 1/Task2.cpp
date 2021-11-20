@@ -1,10 +1,13 @@
-// -------------------------------------------------------------------------------------
+// --------------------------------------------------------------------
 // File: Task2.cpp  
 // Summary:  A program that reads four integers, input by the user. The program calculates the 
 //           sum, mean value and product of the four integers. 
 // Version : 1  
 // Author: Olle Astré
-// -------------------------------------------------------------------------------------
+//---------------------------------------------------------------------
+// Log:  2021-11-09 Created by Olle.
+//  
+//--------------------------------------------------------------------- 
 
 // Preprocessor directives 
 #include <iostream>

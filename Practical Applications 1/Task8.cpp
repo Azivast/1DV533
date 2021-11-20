@@ -1,9 +1,12 @@
-// -------------------------------------------------------------------------------------
+// --------------------------------------------------------------------
 // File: Task8.cpp  
 // Summary: Calculates the effective temperature given a wind speed and temperature. 
 // Version : 1  
 // Author: Olle Astré
-// -------------------------------------------------------------------------------------
+//---------------------------------------------------------------------
+// Log:  2021-11-10 Created by Olle.
+//  
+//--------------------------------------------------------------------- 
 
 // Preprocessor directives 
 #include <iostream>
@@ -47,7 +50,6 @@ int main()
 
           cout << "New calculation (Y/N)?: ";
           cin >> answer;
-
           cin.clear(); 
           cin.ignore(80,'\n'); // Skip any possible debris and line endings
      } 

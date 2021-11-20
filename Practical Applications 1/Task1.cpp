@@ -1,11 +1,14 @@
-// -------------------------------------------------------------------------------------
+// --------------------------------------------------------------------
 // File: Task1.cpp  
 // Summary: Requests an employee's monthly wage (salary), calculates and prints
 //          the retroactive wage for the last 6 months and the new monthly wage
 //          given a wage precentage increase.
 // Version : 1  
 // Author: Olle Astré
-// -------------------------------------------------------------------------------------
+//---------------------------------------------------------------------
+// Log:  2021-11-09 Created by Olle.
+//  
+//--------------------------------------------------------------------- 
 
 // Preprocessor directives 
 #include <iostream>

@@ -1,19 +1,21 @@
-// -------------------------------------------------------------------------------------
+// --------------------------------------------------------------------
 // File: Task10.cpp  
 // Summary: Calculates compound interest. 
 // Version : 1  
 // Author: Olle Astré
-// -------------------------------------------------------------------------------------
+//---------------------------------------------------------------------
+// Log:  2021-11-09 Created by Olle.
+//  
+//--------------------------------------------------------------------- 
 
 // Preprocessor directives 
 #include <iostream>
-#include <iomanip> //setw, setfill
+#include <iomanip> //setw setfill fixed setprecision
 #include <cmath> // pow
-#include <limits>  // numeric_limits
+#include <limits> // numeric_limits
 using namespace std;
 
 // Prototypes 
-
 double getUserInput(string promptText);
 double calculateInterest(double initialAmount, int years);
 void printResult(double result);
@@ -21,7 +23,6 @@ void cls();
 
 // Global variables
 const int RATE = 3; // Interest rate
-double initialAmount = 0;
 int years;
 
 int main()  
@@ -33,7 +34,7 @@ int main()
           cout << "COMPOUND INTEREST\n"
                << "==============\n\n";
 
-          initialAmount = getUserInput("Load initial amount: ");
+          double initialAmount = getUserInput("Load initial amount: ");
           years = getUserInput("Load number of years: ");
           cout << endl;
 
@@ -69,8 +70,8 @@ double getUserInput(string promptText)
           cin.clear(); 
           cin.ignore( numeric_limits<streamsize>::max(),'\n');
      
-          cout << "\nInvalid input."
-               << "\nPlease try again: ";
+          cout << "\nInvalid input, please try again.\n"
+               << promptText;
           cin >> input;
           cout << endl;
      } 
@@ -81,9 +82,10 @@ double getUserInput(string promptText)
 void printResult(double result)
 {
      cout << "The capital with " << RATE << " \% interest rate and after " << years << " years will be: "
-     << right << setw(12) << setfill('_') << result << " SEK\n\n"; // Right aligned in 12 character space with fill characters
+     << fixed << showpoint << setprecision(2)     // Decminal form with hundredths
+     << right << setw(12) << setfill('_')         // Right aligned in a 12 character space with fill characters
+     << result << " SEK\n\n"; 
 }
-
 
 // Clear screen in both windows and linux
 void cls()

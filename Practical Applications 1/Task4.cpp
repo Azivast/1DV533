@@ -16,7 +16,7 @@
 //     that is iterated in the main function.  
 //   2012-10-21 Revised by Anne. Converted to English version and VS 2012 
 //   2021-11-09 Revised by Olle. Add RATEFACTOR which represents the rate as a factor on line 55.
-//     Canged totalPrice to price on line 75
+//     Canged totalPrice to price on line 75.
 //     Multipled both rateSEK and totalPrice by nrOfArticles so that result is as expected.
 //     Added missing = on first condition of line 40.
 //----------------------------------------------------------------------- 

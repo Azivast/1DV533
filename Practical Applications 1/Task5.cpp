@@ -1,9 +1,12 @@
-// -------------------------------------------------------------------------------------
+//---------------------------------------------------------------------
 // File: Task5.cpp  
 // Summary: Calculates remaining travel time using remaining distance and average speed.
 // Version : 1  
 // Author: Olle Astré
-// -------------------------------------------------------------------------------------
+//---------------------------------------------------------------------
+// Log:  2021-11-10 Created by Olle.
+//   2021-11-20 Ignore remainder of stream after input, Olle.
+//--------------------------------------------------------------------- 
 
 // Preprocessor directives 
 #include <iostream>
@@ -23,7 +26,7 @@ int main()
           calculateTime();
           cout << "New calculation (Y/N)?\n";
           cin >> answer;
-          cin.ignore(80,'\n'); // Ignore possible debris and line endings 
+          cin.ignore(80,'\n'); // Ignore remainder of stream
      } 
      while (answer == 'Y' || answer == 'y');
      
@@ -44,9 +47,11 @@ void calculateTime()
      cout << "===========\n";
      cout << "Input the avarage speed (km/h): ";
      cin >> averageSpeed;
+     cin.ignore(80,'\n'); // Ignore remainder of stream
 
      cout << "Input the remaining distance (swedish miles): ";
      cin >> distanceLeft;
+     cin.ignore(80,'\n');
      cout << endl;
 
      // Check that input is not zero to avoid dividing by zero.
