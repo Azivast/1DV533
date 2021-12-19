@@ -82,7 +82,7 @@ double getUserInput(string promptText)
 void printResult(double result)
 {
      cout << "The capital with " << RATE << " \% interest rate and after " << years << " years will be: "
-     << fixed << showpoint << setprecision(2)     // Decminal form with hundredths
+     << fixed << showpoint << setprecision(2)     // Decimal form with hundredths
      << right << setw(12) << setfill('_')         // Right aligned in a 12 character space with fill characters
      << result << " SEK\n\n"; 
 }
