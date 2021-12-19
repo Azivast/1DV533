@@ -1,4 +1,2 @@
-
-void cls()
-{
-    system("cls||clear");
+    // if (!nothingDone)
+    //     trim(string);

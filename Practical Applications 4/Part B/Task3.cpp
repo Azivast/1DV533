@@ -50,14 +50,19 @@ char *trim(char* string)
     bool nothingDone = true;
     for (int i = 0; i < strlen(string)-2; i++)
     {
-        if ((isspace(string[i-1]) || iscntrl(string[i-1])) && isspace(string[i]))
+        if (isgraph(string[i-1]) && isgraph(string[i+1]))
         {
-            strcpy(string+i-1, string+i);
+            continue;
+        }
+        else
+        {
+            strcpy(string+i-1, string+i+1);
             nothingDone = false;
         }
     }
     if (!nothingDone)
         trim(string);
+    else break;
 
     return string;
 }
