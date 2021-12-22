@@ -32,10 +32,10 @@ int main()
         cin.getline(string, MAXLENGTH);
 
         // Output
-        cout << "\nCleared text: _" << trim(string) << "_" << endl;
+        cout << "\nCleared text: " << trim(string) << endl;
 
         // Re-run
-        cout << endl << "\nOne more time (Y/N)? "; 
+        cout << "\nOne more time (Y/N)? "; 
         cin >> answer; 
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
     } while (toupper(answer) == 'Y'); 
@@ -43,26 +43,34 @@ int main()
     return 0; 
 } 
 
-// Trims leading and trailing spaces and removes any more than one space between words.
-char *trim(char* string)
+// Trims leading, trailing, and duplicate spaces
+char *trim(char *string)
 {
-    // Remove duplicate whitespaces
-    bool nothingDone = true;
-    for (int i = 0; i < strlen(string)-2; i++)
+    // Trim any leading space
+    char *start = string;
+    while(isspace(*start))
+        start++;
+    if(*start == 0) // No need to proceed if string is all spaces
+        return start;
+    strcpy(string, start); // Undefined behavior! Strings should not overlap
+
+    // Remove duplicate spaces between words
+    for (int i = 1; i < strlen(string)-2; i++) // No need to check first since leading spaces have already been removed
     {
-        if (isgraph(string[i-1]) && isgraph(string[i+1]))
+        while (isspace(string[i]))
         {
-            continue;
-        }
-        else
-        {
-            strcpy(string+i-1, string+i+1);
-            nothingDone = false;
+            if (isspace(string[i]) && isspace(string[i+1]))
+                strcpy(string+i, string+i+1); // Move characters "down" one step
+            else break;
         }
     }
-    if (!nothingDone)
-        trim(string);
-    else break;
+
+    // Trim trailing spaces
+    char *end = string + strlen(string)-1;
+    while((end > string) && isspace(*end))
+        end--;
+    // Ensure string ends with null terminator
+    end[1] = '\0';
 
     return string;
 }

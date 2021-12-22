@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // File: Task5.cpp  
-// Summary: Check if a word is a palindrome
+// Summary: Check if input is a palindrome
 // Version: 1
 // Author: Olle Astré
 //------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ int main()
             cout << "It is not a palindorome.\n";
 
         // Re-run
-        cout << endl << "\nOne more time (Y/N)? "; 
+        cout << "\nAnother one (Y/N)? "; 
         cin >> answer; 
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
     } while (toupper(answer) == 'Y'); 
@@ -55,6 +55,12 @@ bool isPalindrome(char s[])
                                          // right is index of the last character 
     while (left < right) 
     { 
+        // Ignore whitespaces
+        while (isspace(s[left]))
+            left++;
+        while (isspace(s[right]))
+            right--;
+
         // "Check if first and last character are equal..."
         if (toupper(s[left]) != toupper(s[right]))
             return false;

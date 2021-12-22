@@ -14,7 +14,7 @@ using namespace std;
 
 // Prototypes
 void cls();
-void abbreviateName(char* name);
+char *abbreviateName(char* name);
 
 const int MAXLENGTH = 100; // Maximum length of strings
 
@@ -37,7 +37,7 @@ int main()
         cout << "\nTreated name: " << name << endl;
 
         // Re-run
-        cout << endl << "\nOne more time (Y/N)? "; 
+        cout << "\nOne more time (Y/N)? "; 
         cin >> answer; 
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
     } while (toupper(answer) == 'Y'); 
@@ -45,13 +45,13 @@ int main()
     return 0; 
 } 
 
-// Abbreviates the first name when provided with a 'Firstname Lastname' cstring
-// Also returns the 
-void abbreviateName(char* name)
+// Abbreviates the first name when provided with a 'Firstname Lastname' c-string
+// Also returns the c-string
+char *abbreviateName(char* name)
 {
     int space = 0;
 
-    // Find space that separetes first and last name
+    // Find space that separates first and last name
     for (int i = 0; i < strlen(name); i++)
     {
         if (name[i] == ' ')
@@ -62,6 +62,8 @@ void abbreviateName(char* name)
     }
     int i = 2;
     strcpy(name + 1, name + space); 
+
+    return name;
 }
 
 // Clear screen in windows and *nix systems

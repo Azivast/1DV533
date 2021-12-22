@@ -35,7 +35,7 @@ int main()
         cout << "\nThe text backwards: " << reverseString(str, reversedStr) << endl;
 
         // Re-run
-        cout << endl << "\nOne more time (Y/N)? "; 
+        cout << "\nOne more time (Y/N)? "; 
         cin >> answer; 
         cin.ignore(numeric_limits<streamsize>::max(),'\n');
     } while (toupper(answer) == 'Y'); 
@@ -55,6 +55,9 @@ char *reverseString(char* inputString, char* outputString)
         // Last char of input is set to the first char of output, then step "inwards" one character
         *start++ = *end--; 
     } 
+
+    // *start will be at end of reversed string. Makes sure that's a null termination character
+    *start = '\0';
 
     return outputString;
 }

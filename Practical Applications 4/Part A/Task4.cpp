@@ -45,19 +45,24 @@ int main()
 
 // Validates SSN
 bool ssnOK(char ssn[]) 
-{ 
-    //TODO: MAYBE VALIDATE LENGTH OF MONTHS AND SO ON?
-
-    // Check if all digits
+{
+    // Check if only allowed characters
     for (int i = 0; i < strlen(ssn); i++)
     {
         if (!isdigit(ssn[i]))        
         {
-            if (i == 6 && ssn[i] == '-') {} // Ignore hyphen if in the right place
+            if (i == 6 && ssn[i] == '-' && strlen(ssn) == 11) // Unless hyphen in digit 6 
+                continue;     
             else
-                return false;     
+                return false;
         }
     }
+
+    // Rudimentary validation of months and days.
+    if (ssn[2]-'0' > 1 || (ssn[2]-'0' == 1 && ssn[3]-'0' > 2)) // If month is above 12. -'0' to convert char to int
+        return false;
+    if (ssn[4]-'0' > 3 || (ssn[4]-'0' == 3 && ssn[5]-'0' > 1)) // If day is above 31
+            return false;
 
     return (strlen(ssn) <= MAXLENGTH) && strlen(ssn) >= MINLENGTH;
 }
