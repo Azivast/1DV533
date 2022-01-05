@@ -5,7 +5,7 @@
 // Author: Olle Astré
 //------------------------------------------------------------------------------
 // Log:  2021-12-18 Created by Olle.
-//
+//       2021-12-23 Use memmove instead of strcpy to prevent undefined behavior.
 //------------------------------------------------------------------------------
 #include <iostream> 
 #include <limits> // numeric_limits 
@@ -60,8 +60,10 @@ char *abbreviateName(char* name)
             break;
         }
     }
-    int i = 2;
-    strcpy(name + 1, name + space); 
+
+    // Remove everything between first letter and space
+    //strcpy(name + 1, name + space); Not using this. Overlapping memory = undefined behavior
+    memmove(name + 1, name + space, strlen(name) - space + 1); // Last "+ 1" includes null termination character
 
     return name;
 }

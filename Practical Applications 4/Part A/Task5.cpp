@@ -16,7 +16,7 @@ using namespace std;
 void cls();
 bool isPalindrome(char s[]);
 
-const int MAXLENGTH = 100; // Maximum length of temp strings
+const int MAXLENGTH = 100; // Maximum length of tmp strings
 
 int main() 
 { 
@@ -34,9 +34,9 @@ int main()
 
         // Output
         if (palindrome)
-            cout << "It is a palindorome.\n";
+            cout << "It is a palindrome.\n";
         else 
-            cout << "It is not a palindorome.\n";
+            cout << "It is not a palindrome.\n";
 
         // Re-run
         cout << "\nAnother one (Y/N)? "; 

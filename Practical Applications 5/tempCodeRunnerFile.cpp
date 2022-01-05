@@ -1,0 +1,1 @@
+cout << friends[count] << endl;

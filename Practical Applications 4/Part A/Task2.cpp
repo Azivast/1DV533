@@ -38,6 +38,7 @@ int main()
 
         cout << endl << "\nOne more time (Y/N)? "; 
         cin >> answer; 
+        cin.ignore(numeric_limits<streamsize>::max(),'\n');
     } while (toupper(answer) == 'Y'); 
 
     return 0; 

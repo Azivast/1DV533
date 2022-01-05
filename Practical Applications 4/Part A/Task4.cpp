@@ -31,7 +31,7 @@ int main()
     {
         char ssn[STRINGLENGTH] = {'\0'}; 
 
-        //cls();
+        //cls(); Removed to replicate output of task test case
         getInput(ssn);
         outputGender(ssn);
 
@@ -74,7 +74,7 @@ void getInput(char ssn[])
     do 
     { 
         cout << "\nPlease enter a Social Security Number: ";
-        cin.getline(ssn, STRINGLENGTH, '\n');
+        cin.getline(ssn, STRINGLENGTH);
         valid = ssnOK(ssn); 
         
         if (!valid) 
