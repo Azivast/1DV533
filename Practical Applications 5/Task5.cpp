@@ -2,11 +2,11 @@
 // File: Task5.cpp  
 // Summary: Sorts a given list of names in alphabetical order.
 // Version: 1
-// Author: Unkown
+// Author: Unknown
 //---------------------------------------------------------------------
-// Log:  2022-01-05 Implemented missing functions and logic
+// Log:  2022-01-05 Implemented missing functions and logic.
 //                  "WRITE CODE" comments have been kept for the sake 
-//                  of demonstrating what has changed. //Olle
+//                  of demonstrating what has been added. //Olle Astré
 //--------------------------------------------------------------------- 
 #include <iostream>
 #include <cstring>
@@ -52,13 +52,13 @@ void sort(char *friendList[], int n)
 
     // Bubble sort
     char *temp;
-    for (int i = 0; i < AMOUNT-1; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = i + 1; j < AMOUNT; j++)
+        for (int j = i + 1; j < n; j++)
         {
-            if(strcmp(friendList[i], friendList[j]) > 0) // if j should be earlier in alphabetical order
+            if(strcmp(friendList[i], friendList[j]) > 0) // if j should comes earlier in alphabetical order
             {
-                // Swap the pointers
+                // then swap the pointers i and j
                 temp = friendList[i];
                 friendList[i] = friendList[j];
                 friendList[j] = temp;
@@ -71,7 +71,8 @@ void sort(char *friendList[], int n)
 void print(char *friendList[], int n)
 {
     // WRITE FUNCTION that prints ‘n’ names from the friendList on screen! //DONE
-    for (int i = 0; i < AMOUNT; i++)
+    cout << "\nYour friends in alphabetical order:\n";
+    for (int i = 0; i < n; i++)
     {
         cout << friendList[i] << endl;
     }
@@ -81,7 +82,7 @@ void print(char *friendList[], int n)
 void terminate(char *friendList[], int n)
 {
     // WRITE FUNCTION that releases all dynamically allocated memory! //DONE
-    for (int i = 0; i < AMOUNT; i++)
+    for (int i = 0; i < n; i++)
     {
         delete [] friendList[i];
     }

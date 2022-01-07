@@ -1,6 +1,6 @@
 //------------------------------------------------------------------------------
 // File: Task1.cpp  
-// Summary: Reads and stores arbitrary number of integers seperated by space or 
+// Summary: Reads and stores arbitrary number of integers separated by space or 
 //          new line until non-numeric value is encountered.
 // Version: 1
 // Author: Olle Astré
@@ -19,7 +19,7 @@ int main()
     int input;
 
     // Input
-    cout << "Enter integer numbers to store (Stop by entering any non-numeric value): ";
+    cout << "Enter integer numbers to store (Stop by entering any non-numeric value):\n";
     while (cin >> input, !cin.fail())
     {
         counter++;
@@ -30,7 +30,7 @@ int main()
         tmp[counter-1] = input;
 
         // Delete old array and point integers to new one.
-        delete integers; 
+        delete [] integers; 
         integers = tmp;
     }
 
@@ -41,5 +41,7 @@ int main()
     cout << endl;
 
     // Free up memory
-    delete integers;
+    delete [] integers;
+
+    return 0;
 } 

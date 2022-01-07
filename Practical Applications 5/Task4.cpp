@@ -13,7 +13,6 @@
 using namespace std; 
 
 const int WINLIMIT = 10; // Limit to win 
-int userScore = 0, computerScore = 0;
 enum Choices { ROCK, SCISSORS, PAPER };
 string choiceNames[3] = { "Rock", "Scissors", "Paper"};
 
@@ -21,7 +20,7 @@ string choiceNames[3] = { "Rock", "Scissors", "Paper"};
 void cls();
 Choices getInput();
 void decidedWinner(Choices userChoice, Choices ComputerChoice);
-void newTurn();
+void newTurn(int &userScore, int &computerScore);
 
 int main() 
 { 
@@ -29,15 +28,15 @@ int main()
     do 
     {
         srand(time(0));
-        userScore = 0, computerScore = 0; // Reset scores
+        int userScore = 0, computerScore = 0; // Reset scores
         cls();
 
-        cout << "STONE SCISSORS PAPPER\n"
+        cout << "STONE SCISSORS PAPER\n"
              << "=====================\n";
         
         while(true)
         {
-            newTurn();
+            newTurn(userScore, computerScore);
 
             // Check if any winner
             if (userScore >= WINLIMIT)
@@ -80,44 +79,38 @@ Choices getInput()
     return static_cast<Choices>(input);
 }
 
-// Print the winner and increases their score
-void decidedWinner(Choices userChoice, Choices ComputerChoice)
-{
-    if (userChoice == ComputerChoice)
-        {
-            cout << "Equal!\n";
-        }
-    else if (userChoice == Choices::ROCK && ComputerChoice == Choices::SCISSORS)
-        {
-            cout << "You won!\n";
-            userScore++;
-        }
-    else if (userChoice == Choices::SCISSORS && ComputerChoice == Choices::PAPER)
-        {
-            cout << "You won!\n";
-            userScore++;
-        }
-    else if (userChoice == Choices::PAPER && ComputerChoice == Choices::ROCK)
-        {
-            cout << "You won!\n";
-            userScore++;
-        }
-    else
-        {
-            cout << "Computer won!\n";
-            computerScore++;
-        }
-
-}
-
 // Handles a single turn.
-void newTurn()
+void newTurn(int &userScore, int &computerScore)
 {
     Choices userChoice = getInput();
     Choices computerChoice = static_cast<Choices>(rand() % 3); // 0 to 2
     cout << "Computer choose " << choiceNames[computerChoice] << endl;
 
-    decidedWinner(userChoice, computerChoice);
+    // Decide winner
+    if (userChoice == computerChoice)
+    {
+        cout << "Equal!\n";
+    }
+    else if (userChoice == Choices::ROCK && computerChoice == Choices::SCISSORS)
+    {
+        cout << "You won!\n";
+        userScore++;
+    }
+    else if (userChoice == Choices::SCISSORS && computerChoice == Choices::PAPER)
+    {
+        cout << "You won!\n";
+        userScore++;
+    }
+    else if (userChoice == Choices::PAPER && computerChoice == Choices::ROCK)
+    {
+        cout << "You won!\n";
+        userScore++;
+    }
+    else
+    {
+        cout << "Computer won!\n";
+        computerScore++;
+    }
     
     cout << "Score (you - computer): " << userScore << " - " << computerScore << endl;
 }

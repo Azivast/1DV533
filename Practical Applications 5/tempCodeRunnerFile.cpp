@@ -1,1 +1,2 @@
-cout << friends[count] << endl;
+
+    return 0;

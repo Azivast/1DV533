@@ -10,7 +10,7 @@
 #include <iostream> 
 #include <limits> // numeric_limits 
 #include <iomanip> // setw setfill
-#include <cstdlib> // rand
+#include <cstdlib> // rand abs
 using namespace std; 
 
 struct TimeType
@@ -30,7 +30,7 @@ int main()
     srand(time(0)); // Seed random number generator
     cout << setfill('0'); // Leading 0 for displaying time
 
-    // A:
+    // A) Example of toMinutes
     int minutes;
     TimeType timeA = {10, 15};
     minutes = toMinutes(timeA);
@@ -39,14 +39,14 @@ int main()
          << " returns:" << endl
          << minutes << " (minutes)\n\n"; // Should write: 615 minutes
 
-    // B:
+    // B) Example of toTime
     minutes = 124;
     TimeType time = toTime(minutes);
     cout << "Part B:\n" << "Invoking toTime with " 
          << minutes << " minutes returns:\n"
          << setw(2) << time.hour << ":" << setw(2) << time.min << endl << endl;
 
-    // C:
+    // C) Example of timeDifference
     TimeType timeB = {10, 30}, timeC = {13, 20}, difference;
     difference = timeDifference(timeB, timeC);
     cout << "Part C:\n" << "Invoking timeDifference with " 
@@ -55,11 +55,10 @@ int main()
          << " returns:\n"
          << setw(2) << difference.hour << ":" << setw(2) << difference.min << endl << endl;
 
-    // D:
+    // D) Example of dynamicTimes
     TimeType maxDiff = dynamicTimes();
     cout << "Part D:\n" << "Invoking dynamicTimes this time resulted in a difference of:\n"
          << setw(2) << maxDiff.hour << ":" << setw(2) << maxDiff.min << endl;
-
 
     return 0;
 }
@@ -82,7 +81,7 @@ TimeType timeDifference(TimeType a, TimeType b)
 {
     int minutesA = toMinutes(a);
     int minutesB = toMinutes(b);
-    return toTime(minutesB-minutesA);
+    return toTime(abs(minutesB-minutesA));
 }
 
 // Generates an array with 200 random times. Picks out the highest and lowest
